@@ -5,7 +5,11 @@ root.title("Biblioteka Danych")
 root.geometry("800x600")
 
 label = tk.Label(root, text="Zasoby główne", font=("Arial", 26))
+stopka = tk.Label(root, text="KOPY RAJT", font=("Arial", 12))
+stopka2 = tk.Label(root, text="SEBA KRZYCH", font=("Arial", 12))
 label.pack(pady=50)
+stopka2.pack(side="bottom")
+stopka.pack(side="bottom")
 
 #FUNKCJE PROGRAMH DO OKIEN
 
