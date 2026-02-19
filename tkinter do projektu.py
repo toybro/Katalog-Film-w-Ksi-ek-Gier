@@ -41,6 +41,7 @@ def klikkatalogksiazki():
 def klik():
 
     pass
+
 def klik():
 
     pass
@@ -48,12 +49,12 @@ def klik():
 
 #BUTONY
 
-button_frame = tk.Frame(root)
-button_frame.pack(pady=1)
+siatka_guzikuw = tk.Frame(root)
+siatka_guzikuw.pack(pady=1)
 
-filmyklik = tk.Button(button_frame, text="Katalog filmów", command=klikkatalogfilmy, font=("Arial", 14))
-gryklik = tk.Button(button_frame, text="Katalog Gier", command=klikkataloggry, font=("Arial", 14))
-ksiazklik = tk.Button(button_frame, text="Katalog książek", command=klikkatalogksiazki, font=("Arial", 14))
+filmyklik = tk.Button(siatka_guzikuw, text="Katalog filmów", command=klikkatalogfilmy, font=("Arial", 14))
+gryklik = tk.Button(siatka_guzikuw, text="Katalog Gier", command=klikkataloggry, font=("Arial", 14))
+ksiazklik = tk.Button(siatka_guzikuw, text="Katalog książek", command=klikkatalogksiazki, font=("Arial", 14))
 
 filmyklik.grid(row=0, column=0, padx=10, pady=3, sticky="w")
 gryklik.grid(row=1, column=0, padx=10, pady=3, sticky="w")
