@@ -3,9 +3,9 @@ from tkinter import ttk
 import projekt
 
 # Importujemy funkcje z nowych, oddzielnych plików
-from okno_szczegoly import otworz_okno_szczegoly
-from okno_opinie import otworz_okno_opinie
-from okno_dodaj import otworz_okno_dodaj
+from okno_szczegoly_filmy import otworz_okno_szczegoly
+from okno_opinie_filmy import otworz_okno_opinie
+from okno_dodaj_filmy import otworz_okno_dodaj
 
 
 def powrotglowne(root, nowe_okno):
