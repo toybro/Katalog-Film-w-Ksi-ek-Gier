@@ -1,0 +1,20 @@
+Akcji
+Edukacyjna
+Llogiczna
+Multiplayer
+Muzyczna i taneczna
+Przygodowa
+RPG
+Sportowa
+Strategiczna
+Strzelanka
+Survival
+Symulacja
+Tower defense
+Wyścigowa
+Zręcznościowa
+
+
+
+
+
