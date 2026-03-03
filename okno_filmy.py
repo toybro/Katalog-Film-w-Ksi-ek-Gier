@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-import projekt
+import baza_danych_loading
 
 # Importujemy funkcje z nowych, oddzielnych plików
 from okno_szczegoly_filmy import otworz_okno_szczegoly
