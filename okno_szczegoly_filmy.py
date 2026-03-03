@@ -1,5 +1,4 @@
 import tkinter as tk
-from tkinter import ttk
 from PIL import Image, ImageTk
 
 
@@ -34,17 +33,17 @@ def otworz_okno_szczegoly(index, films_katalog):
     rating_label.pack()
 
     main_frame = tk.Frame(new_win)
-    main_frame.pack(fill='both', expand=True, padx=10, pady=10)
+    main_frame.pack(fill="both", expand=True, padx=10, pady=10)
 
     try:
         img_title = films_katalog[index]["Tytuł"]
-        img_path = r"FILMY/" + img_title + ".jpg"
+        img_path = "FILMY/" + img_title + ".jpg"
         img = Image.open(img_path)
         img = img.resize((200, 300))
         photo = ImageTk.PhotoImage(img)
     except FileNotFoundError:
         try:
-            standard_img_path = r"FILMY/Empty.jpg"
+            standard_img_path = "FILMY/Empty.jpg"
             img = Image.open(standard_img_path)
             img = img.resize((200, 300))
             photo = ImageTk.PhotoImage(img)
@@ -54,34 +53,24 @@ def otworz_okno_szczegoly(index, films_katalog):
     if photo:
         img_label = tk.Label(main_frame, image=photo)
         img_label.image = photo
-        img_label.pack(side='left', padx=10)
+        img_label.pack(side="left", padx=10)
     else:
         img_label = tk.Label(main_frame, text="Brak okładki", width=25, height=15, bg="lightgray")
-        img_label.pack(side='left', padx=10)
+        img_label.pack(side="left", padx=10)
 
     description_frame = tk.Frame(main_frame)
-    description_frame.pack(side='left', fill='both', expand=True)
+    description_frame.pack(side="left", fill="both", expand=True)
 
     description_movie = films_katalog[index].get("Opis", "Brak opisu")
     genre_movie = films_katalog[index].get("Gatunek", "Brak gatunku")
 
-    description_label = tk.Label(description_frame, text=description_movie, justify='left', wraplength=400)
-    description_label.pack(pady=10)
+    # Opis w ramce
+    description_box = tk.LabelFrame(description_frame, text="Opis", padx=10, pady=10)
+    description_box.pack(fill="both", expand=True, pady=(10, 5))
 
-    genre_label = tk.Label(description_frame, text=genre_movie, font=("Arial", 12, "italic"))
-    genre_label.pack(pady=5)
+    description_label = tk.Label(description_box, text=description_movie, justify="left", wraplength=400, anchor="nw")
+    description_label.pack(fill="both", expand=True)
 
-    canvas = tk.Canvas(new_win)
-    scrollbar = ttk.Scrollbar(new_win, orient='vertical', command=canvas.yview)
-    scrollable_frame = ttk.Frame(canvas)
-
-    scrollable_frame.bind(
-        "<Configure>",
-        lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
-    )
-
-    canvas.create_window((0, 0), window=scrollable_frame, anchor='nw')
-    canvas.configure(yscrollcommand=scrollbar.set)
-
-    canvas.pack(side='left', fill='both', expand=True)
-    scrollbar.pack(side='right', fill='y')
+    # Gatunek pod ramką
+    genre_label = tk.Label(description_frame, text=f"Gatunek: {genre_movie}", font=("Arial", 12, "italic"))
+    genre_label.pack(anchor="w", pady=(6, 0), padx=2)
