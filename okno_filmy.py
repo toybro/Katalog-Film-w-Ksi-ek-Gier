@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-import baza_danych_loading
+import baza_danych_loading as projekt
 
 # Importujemy funkcje z nowych, oddzielnych plików
 from okno_szczegoly_filmy import otworz_okno_szczegoly
@@ -47,7 +47,7 @@ def laduj_lini(scrollable_frame, films_katalog, films_obj):
 
 
 def usun_linie(i, frame, scrollable_frame, films_obj):
-    projekt.MovieDatabase.remove_movie(films_obj, i)
+    films_obj.remove_movie(i)
     films_katalog = films_obj.load_flms_data()
     frame.destroy()
     # Przeładowuje listę
@@ -108,9 +108,10 @@ def otworz_okno_filmy(root):
                               command=lambda: powrotglowne(root, nowe_okno))
     switch_button.pack(side='right', padx=5)
 
-    # Przycisk Dodaj
-    dodaj_button = tk.Button(button_frame, text="Dodaj", font=("Arial", 12),
-                             command=lambda: otworz_okno_dodaj(films, scrollable_frame, laduj_lini))
-    dodaj_button.pack(side='right', padx=5)
+    if baza_istnieje:
+        # Przycisk Dodaj
+        dodaj_button = tk.Button(button_frame, text="Dodaj", font=("Arial", 12),
+                                 command=lambda: otworz_okno_dodaj(films, scrollable_frame, laduj_lini))
+        dodaj_button.pack(side='right', padx=5)
 
     nowe_okno.protocol("WM_DELETE_WINDOW", lambda: powrotglowne(root, nowe_okno))
