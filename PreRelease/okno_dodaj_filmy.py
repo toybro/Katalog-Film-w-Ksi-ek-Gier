@@ -7,7 +7,7 @@ import shutil
 wybrana_sciezka_img = None
 
 
-def wczytaj_gatunki(sciezka="FILMY/gatunki.txt"):
+def wczytaj_gatunki(sciezka="FILMY/gatunki_filmow.txt"):
     """Pomocnicza funkcja do wczytania listy gatunków z pliku."""
     gatunki = []
     if os.path.exists(sciezka):
@@ -18,7 +18,7 @@ def wczytaj_gatunki(sciezka="FILMY/gatunki.txt"):
             print(f"Błąd odczytu gatunków: {e}")
             return ["Błąd odczytu pliku gatunków"]
     else:
-        return ["Brak pliku gatunki.txt"]
+        return ["Brak pliku gatunki_filmow.txt"]
     return sorted(gatunki)
 
 
