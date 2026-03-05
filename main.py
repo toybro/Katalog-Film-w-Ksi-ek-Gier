@@ -39,14 +39,14 @@ def main():
 
     root = tk.Tk()
     root.title("Biblioteka Danych")
-    root.geometry("800x600")
+    root.geometry("800x620")
 
     # Frame 1: Tekst poruszający się (Nagłówek)
     frame1 = tk.Frame(root, height=50)
     frame1.pack(fill='x')
     canvas = tk.Canvas(frame1, height=50)
     canvas.pack(fill='both', expand=True)
-    text_id = canvas.create_text(5, 25, text="Zasoby główne", anchor='w', font=('Arial', 26))
+    text_id = canvas.create_text(5, 25, text="Zasoby główne", anchor='w', font=('Arial', 24))
 
     # Rozpoczęcie animacji po załadowaniu okna
     root.after(100, lambda: animate_text(canvas, text_id))
@@ -64,7 +64,7 @@ def main():
 
     # Wczytanie obrazków (obsługa błędów, jeśli plików nie ma)
     try:
-        img1 = Image.open("img1.png").resize((100, 105))
+        img1 = Image.open("img1.png").resize((100, 150))
         img2 = Image.open("img2.png").resize((100, 150))
         img3 = Image.open("img3.png").resize((100, 150))
         photo1 = ImageTk.PhotoImage(img1)
@@ -72,7 +72,7 @@ def main():
         photo3 = ImageTk.PhotoImage(img3)
         btn_images = [photo1, photo2, photo3]
     except FileNotFoundError:
-        print("Brak plików graficznych (img1.png, img2.png, img3.png). Guziki będą bez obrazków.")
+        print("Brak pliku obrazka więc guzik będzie bez obrazka.")
         btn_images = [None, None, None]
 
     # Tworzenie przycisków w pętli
@@ -81,20 +81,20 @@ def main():
         lambda: otworz_okno_gry(root),
         lambda: otworz_okno_ksiazki(root)
     ]
-    texts = ["Katalog filmów", "Katalog Gier", "Katalog książek"]
+    texts = ["Katalog Filmów", "Katalog Gier", "Katalog Książek"]
 
     for i in range(3):
         # ZMIANA: Rodzicem dla rzędu jest teraz content_container, a nie frame2.
         row = tk.Frame(content_container)
         # USUNIĘTO fill='x', aby rząd dopasował się do zawartości.
         # Zwiększono pady dla lepszego odstępu między rzędami.
-        row.pack(pady=15)
+        row.pack(pady=5)
 
         # Obrazek po lewej (jeśli istnieje)
         if btn_images[i]:
             lbl = tk.Label(row, image=btn_images[i])
             lbl.image = btn_images[i]  # Zachowanie referencji
-            lbl.pack(side='left', padx=(0, 10))  # Dodatkowy odstęp po prawej stronie obrazka
+            lbl.pack(side='left', padx=(0, 25))  # Dodatkowy odstęp po prawej stronie obrazka
 
         btn = tk.Button(row, text=texts[i], font=("Arial", 14), width=20, command=commands[i])
         btn.pack(side='left')
@@ -103,9 +103,9 @@ def main():
     stopka_frame = tk.Frame(root)
     stopka_frame.pack(side="bottom", fill="x", pady=10)
 
-    stopka2 = tk.Label(stopka_frame, text="SEBA KRZYCH", font=("Arial", 12))
+    stopka2 = tk.Label(stopka_frame, text="SEBA KRZYCH", font=("Arial", 10))
     stopka2.pack(side="bottom")
-    stopka = tk.Label(stopka_frame, text="KOPY RAJT", font=("Arial", 12))
+    stopka = tk.Label(stopka_frame, text="KOPY RAJT", font=("Arial", 10))
     stopka.pack(side="bottom")
 
     # Przycisk w prawym dolnym rogu

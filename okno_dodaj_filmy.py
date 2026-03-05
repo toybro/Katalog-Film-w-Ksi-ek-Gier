@@ -153,11 +153,11 @@ def otworz_okno_dodaj(films_obj, scrollable_frame, funkcja_odswiezajaca):
     genres_canvas.pack(side="left", fill="both", expand=True)
     genres_scrollbar.pack(side="right", fill="y")
 
-    # Funkcja do obsługi kółka myszy dla gatunków
+
     def _on_mousewheel(event):
         genres_canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
 
-    # Aktywuj przewijanie myszką tylko wtedy, gdy kursor znajduje się nad listą
+
     genres_canvas.bind('<Enter>', lambda e: genres_canvas.bind_all("<MouseWheel>", _on_mousewheel))
     genres_canvas.bind('<Leave>', lambda e: genres_canvas.unbind_all("<MouseWheel>"))
 
@@ -175,7 +175,7 @@ def otworz_okno_dodaj(films_obj, scrollable_frame, funkcja_odswiezajaca):
     opis_text = tk.Text(form_frame, width=40, height=6, font=("Arial", 10))
     opis_text.grid(row=6, column=1, pady=15, padx=10, sticky="w")
 
-    # ---- PRZYCISKI AKCJI ----
+    # PRZYCISNK AKCJI
     btn_frame = tk.Frame(nowe_okno)
     btn_frame.pack(pady=10, side="bottom")
 
